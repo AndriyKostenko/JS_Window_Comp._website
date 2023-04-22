@@ -4,7 +4,9 @@ const gulp = require("gulp");
 const webpack = require("webpack-stream");
 const browsersync = require("browser-sync");
 
-const dist = "./dist/";
+//const dist = "./dist/"; // to build into prod.
+// to test with local we-server
+const dist = "/var/www/html/test"; 
 
 gulp.task("copy-html", () => {
     return gulp.src("./src/index.html")
