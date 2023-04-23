@@ -6,7 +6,7 @@ const browsersync = require("browser-sync");
 
 const dist = "./dist/"; // to build into prod.
 
-// to test with local we-server
+// to test with local web-server
 //const dist = "/var/www/html/test"; 
 
 gulp.task("copy-html", () => {

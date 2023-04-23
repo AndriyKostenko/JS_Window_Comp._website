@@ -18194,8 +18194,9 @@ var modals = function modals() {
     var trigger = document.querySelectorAll(triggerSelector),
         modal = document.querySelector(modalSelector),
         close = document.querySelector(closeSelector),
-        windows = document.querySelectorAll('[data-modal]'); // getting all modals by data attr.
-
+        windows = document.querySelectorAll('[data-modal]'),
+        // getting all modals by data attr.
+    scroll = calcScroll();
     trigger.forEach(function (item) {
       item.addEventListener('click', function (event) {
         //check if its button, ref or smth else
@@ -18209,7 +18210,8 @@ var modals = function modals() {
 
         modal.style.display = "block"; //freezing modal window
 
-        document.body.style.overflow = 'hidden'; //document.body.classList.add('modal-open'); // checking class from bootstrap
+        document.body.style.overflow = 'hidden';
+        document.body.style.marginRight = "".concat(scroll, "px"); // fixing jumping of scroll after opening of modal window
       });
     });
     close.addEventListener('click', function () {
@@ -18219,7 +18221,8 @@ var modals = function modals() {
       }); // hide the modal
 
       modal.style.display = "none";
-      document.body.style.overflow = ""; // document.body.classList.remove('modal-open'); // checking class from bootstrap
+      document.body.style.overflow = "";
+      document.body.style.marginRight = "0px"; // fixing jumping of scroll after opening of modal window
     }); // checking if clicking outside of modal window 
 
     modal.addEventListener('click', function (event) {
@@ -18229,7 +18232,8 @@ var modals = function modals() {
           item.style.display = 'none';
         });
         modal.style.display = 'none';
-        document.body.style.overflow = ''; //document.body.classList.add('modal-open'); // checking class from bootstrap
+        document.body.style.overflow = '';
+        document.body.style.marginRight = "0px"; // fixing jumping of scroll after opening of modal window
       }
     });
   }
@@ -18239,6 +18243,19 @@ var modals = function modals() {
       document.querySelector(selector).style.display = 'block';
       document.body.style.overflow = 'hidden';
     }, time);
+  } // fixing bug with jumping of scroll after calling modal window
+
+
+  function calcScroll() {
+    var div = document.createElement('div');
+    div.style.width = '50px';
+    div.style.height = '50px';
+    div.style.overflowY = 'scroll';
+    div.style.visibility = 'hidden';
+    document.body.appendChild(div);
+    var scrollWidth = div.offsetWidth - div.clientWidth;
+    div.remove();
+    return scrollWidth;
   }
 
   bindModal('.popup_engineer_btn', '.popup_engineer', '.popup_engineer .popup_close');
@@ -18321,7 +18338,7 @@ var tabs = function tabs(headerSelector, tabSelector, contentSelector, activeCla
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-timer = function timer(id, deadline) {
+var timer = function timer(id, deadline) {
   var addZero = function addZero(num) {
     if (num <= 9) {
       return '0' + num;
