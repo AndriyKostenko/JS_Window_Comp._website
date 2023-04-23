@@ -44,11 +44,14 @@ const forms = (state) => {
             let statusMassage = document.createElement('div');
             //adding class 'status
             statusMassage.classList.add('status');
+
             //appending 'div' into the end of form
             item.appendChild(statusMassage);
+
             // this new object will find all inputs in the current form (item)
             const formData = new FormData(item);
 
+            // checking for specific modal window needed (with our custom data atr.)
             if (item.getAttribute('data-calc') === "end") {
                 for (let key in state) {
                     formData.append(key, state[key]);

@@ -4,6 +4,7 @@ import tabs from './modules/tabs';
 import forms from './modules/forms';
 import changeModalState from './modules/changeModalState';
 import timer from './modules/timer';
+import images from './modules/images';
 
 
 //scripts will start only when DOM is fully ready
@@ -21,4 +22,5 @@ window.addEventListener('DOMContentLoaded', () => {
     tabs('.balcon_icons', '.balcon_icons_img', '.big_img > img', 'do_image_more', 'inline-block') // only with tags 'img'
     forms(modalState); //sending current state 
     timer('.container1', deadline);
+    images();
 })
