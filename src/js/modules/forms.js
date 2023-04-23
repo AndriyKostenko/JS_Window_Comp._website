@@ -1,17 +1,14 @@
+import checkNumInputs from './checkNumInputs';
 
 
-const forms = () => {
+const forms = (state) => {
     const form  = document.querySelectorAll('form'),
-          inputs = document.querySelectorAll('input'),
-          // getting all inpust with field 'user_phone'
-          phoneInputs = document.querySelectorAll('input[name="user_phone"]');
+          inputs = document.querySelectorAll('input');
+          
 
-    phoneInputs.forEach(item => {
-        item.addEventListener('input', () => {
-            // replacing all non-numbers for empty space (you can enter only numbers) 
-            item.value = item.value.replace(/\D/, '');
-        })
-    })
+    // getting all inpust with field 'user_phone'
+    checkNumInputs('input[name="user_phone"]');
+
 
 
     const messsage = {
@@ -51,6 +48,12 @@ const forms = () => {
             item.appendChild(statusMassage);
             // this new object will find all inputs in the current form (item)
             const formData = new FormData(item);
+
+            if (item.getAttribute('data-calc') === "end") {
+                for (let key in state) {
+                    formData.append(key, state[key]);
+                }
+            }
 
             postData('assets/server.php', formData)
                 .then(res => {
