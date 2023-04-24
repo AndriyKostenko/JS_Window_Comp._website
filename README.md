@@ -1,14 +1,17 @@
 # JS_Window_Comp._website
 
+1. `git clone https://github.com/AndriyKostenko/JS_Window_Comp._website.git` 
 
-1. Write `gulp` to start the project.
+2. `cd` into the project folder and `npm install`
+
+3. `gulp` to start the project.
    The project will be started on http://localhost:4000/
     <br />(If you have got such error: 'Error: error:0308010C:digital envelope routines::unsupported' - write into command line: 
         <br /> linux: `export NODE_OPTIONS=--openssl-legacy-provider`(linux users) 
         <br /> windows: `set NODE_OPTIONS=--openssl-legacy-provider`
     in your command line...after checking the project write into command line `unset NODE_OPTIONS` to activate the security measures in your pc again)
 
-2. For testing fetch() API for POST req. you will need local web-server installed...i will recommend Apache2 (how to install see in internet).
+4. For testing fetch() API for POST req. you will need local web-server installed...i will recommend Apache2 (how to install see in internet).
     Debian Linux version 8.x+ or Ubuntu Linux version Ubuntu 15.04+ or above: 
     # Start command #
     `sudo systemctl start apache2.service`
