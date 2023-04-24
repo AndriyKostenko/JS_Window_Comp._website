@@ -19,5 +19,6 @@
     # Status #
     `sudo systemctl status apache2.service`
     and to setup local web-server into folder: /var/www/html/test - (uncomment necc. lines in gulpfile.js)
-    Server will be started on http://127.0.0.1/test/ 
+    Server will be started on http://127.0.0.1/test/
+    
 [Screencast from 2023-04-23 07_56_43 PM_compressed.webm](https://user-images.githubusercontent.com/91188777/233874671-db6e2ced-0465-43a8-b74d-3a078baf4e1a.webm)
